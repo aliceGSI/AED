@@ -1,0 +1,67 @@
+#include <iostream>
+
+template <class T>
+struct pila
+{
+    T A[10];
+    T* top = nullptr;
+    bool vacio();
+    bool lleno();
+    bool push(int a);
+    bool pop(int a);
+};
+
+template<class T>
+bool pila<T>::vacio()
+{
+    return !top;
+}
+
+template<class T>
+bool pila<T>::lleno()
+{
+    return top == A + 9;
+}
+
+template<class T>
+bool pila<T>::push(int a)
+{
+    if (lleno())
+    {
+        return false;
+    }
+    else
+    {
+        if (!top)
+        {
+            top = A;
+        }
+        else { top++; }
+    }
+    *top = a;
+    return true;
+}
+
+template<class T>
+bool pila<T>::pop(int a)
+{
+    if (vacio())
+    {
+        return false;
+    }
+    else
+    {
+        a = *top,
+            top--;
+        if (top < A)
+        {
+            top = nullptr;
+        }
+        return true;
+    }
+}
+int main()
+{
+    std::cout << "Hello World!\n";
+    return 0;
+}
