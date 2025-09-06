@@ -1,0 +1,61 @@
+#include <iostream>
+
+struct pila
+{
+    int A[10];
+    int* top = nullptr;
+    bool vacio();
+    bool lleno();
+    bool push(int a);
+    bool pop(int a);
+};
+
+bool pila::vacio()
+{
+    return !top;
+}
+bool pila::lleno()
+{
+    return top == A + 9;
+}
+
+bool pila::push(int a)
+{
+    if (lleno())
+    {
+        return false;
+    }
+    else
+    {
+        if (!top)
+        {
+            top = A;
+        }
+        else { top++; }
+    }
+    *top = a;
+    return true;
+}
+
+bool pila::pop(int a)
+{
+    if (vacio())
+    {
+        return false;
+    }
+    else
+    {
+        a = *top,
+            top--;
+        if (top < A)
+        {
+            top = nullptr;
+        }
+        return true;
+    }
+}
+int main()
+{
+    std::cout << "Hello World!\n";
+    return 0;
+}
