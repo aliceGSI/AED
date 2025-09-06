@@ -1,5 +1,5 @@
 #include <iostream>
-
+using namespace std;
 template <class T>
 struct pila
 {
@@ -62,6 +62,12 @@ bool pila<T>::pop(int a)
 }
 int main()
 {
-    std::cout << "Hello World!\n";
+    /*
+    pila <int>pint;
+    int a;
+    pint.push(7);
+    pint.pop(a);
+    cout << a << endl;
+    */
     return 0;
 }
