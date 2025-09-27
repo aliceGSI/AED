@@ -113,7 +113,6 @@ void queue::print()
 int main()
 {
     queue q(10);
-    cout << "   DEMOSTRACION COLA CIRCULAR " << endl;
 
     cout << "\nInsertando 10 elementos" << endl;
     int i = 1;
