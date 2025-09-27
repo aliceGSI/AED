@@ -75,17 +75,12 @@ void queue::print()
         return;
     }
     int* p = head;
-    while (true)
-    {
+    do {
         cout << *p << " ";
-        if (p == tail && full == false)
-            break;
         p++;
         if (p == end)
             p = cola;
-        if (p == tail && full == false)
-            break;
-    }
+    } while (p != tail || (p == tail && full));
     cout << endl;
 }
 
