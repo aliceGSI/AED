@@ -68,6 +68,7 @@ bool queue::vacio()
     return (head == tail && !full);
 }
 
+/*
 void queue::print()
 {
     if (vacio()) {
@@ -83,6 +84,31 @@ void queue::print()
     } while (p != tail || (p == tail && full));
     cout << endl;
 }
+*/
+void queue::print() 
+{
+    if (vacio()) 
+    {
+        cout << "Cola vacia" << endl;      
+        return; 
+    }  
+    int* p = head; 
+    while (true)
+    { 
+        cout << *p << " ";    
+        if (p == tail && !full)       
+            break;        
+        p++;   
+        if (p == end)        
+            p = cola;    
+        if (p == tail && !full)     
+            break;  
+        if (p == head && full)       
+            break; 
+    }   
+    cout << endl;
+}
+
 
 int main()
 {
