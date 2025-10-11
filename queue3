@@ -4,11 +4,11 @@ using namespace std;
 class queue
 {
 private:
-    int* cola;
-    int* head;
-    int* tail;
-    int* end;
-    bool full;
+    int* cola;   
+    int* head;   
+    int* tail;   
+    int* end;    
+    bool full;   
 public:
     queue(int cap);
     ~queue();
@@ -68,47 +68,30 @@ bool queue::vacio()
     return (head == tail && !full);
 }
 
-/*
 void queue::print()
 {
-    if (vacio()) {
+    if (vacio())
+    {
         cout << "Cola vacia" << endl;
         return;
     }
+
     int* p = head;
-    do {
+
+    while (true)
+    {
         cout << *p << " ";
         p++;
         if (p == end)
             p = cola;
-    } while (p != tail || (p == tail && full));
-    cout << endl;
-}
-*/
-void queue::print() 
-{
-    if (vacio()) 
-    {
-        cout << "Cola vacia" << endl;      
-        return; 
-    }  
-    int* p = head; 
-    while (true)
-    { 
-        cout << *p << " ";    
-        if (p == tail && !full)       
-            break;        
-        p++;   
-        if (p == end)        
-            p = cola;    
-        if (p == tail && !full)     
-            break;  
-        if (p == head && full)       
-            break; 
-    }   
-    cout << endl;
-}
 
+        if (p == tail && !full)
+            break;
+        if (p == head && full)
+            break;
+    }
+    cout << endl;
+}
 
 int main()
 {
@@ -129,14 +112,13 @@ int main()
     while (j < 5)
     {
         int x = q.pop();
-        if (x != -1) {
+        if (x != -1)
+        {
             cout << "Se desencolo: " << x << " -> ";
             q.print();
         }
         j++;
     }
-
-    cout << "\nInsertando 3 elementos mas (11, 12, 13)" << endl;
     int k = 11;
     while (k <= 13)
     {
@@ -145,8 +127,6 @@ int main()
         q.print();
         k++;
     }
-
-    cout << "\nfin" << endl;
     q.print();
     return 0;
 }
