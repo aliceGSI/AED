@@ -78,18 +78,19 @@ private:
 
         int balance = getBalance(node);
 
+        //LL
         if (balance > 1 && key < node->left->data)
             return rotateRight(node);
-
+        //RR
         if (balance < -1 && key > node->right->data)
             return rotateLeft(node);
-
+        //LR
         if (balance > 1 && key > node->left->data)
         {
             node->left = rotateLeft(node->left);
             return rotateRight(node);
         }
-
+        //RL
         if (balance < -1 && key < node->right->data)
         {
             node->right = rotateRight(node->right);
@@ -144,19 +145,19 @@ private:
         updateHeight(root);
 
         int balance = getBalance(root);
-
+        //LL
         if (balance > 1 && getBalance(root->left) >= 0)
             return rotateRight(root);
-
+        //LR
         if (balance > 1 && getBalance(root->left) < 0)
         {
             root->left = rotateLeft(root->left);
             return rotateRight(root);
         }
-
+        //RR
         if (balance < -1 && getBalance(root->right) <= 0)
             return rotateLeft(root);
-
+        //RL
         if (balance < -1 && getBalance(root->right) > 0)
         {
             root->right = rotateRight(root->right);
@@ -232,7 +233,7 @@ void drawAVLTree(sf::RenderWindow& window, AVLNode* node, float x, float y,
 
     sf::CircleShape circle(25);
     circle.setPosition(x - 25, y - 25);
-    circle.setFillColor(sf::Color(100, 255, 100));
+    circle.setFillColor(sf::Color(100, 200, 255));
     circle.setOutlineThickness(2);
     circle.setOutlineColor(sf::Color::White);
     window.draw(circle);
@@ -270,33 +271,29 @@ int main()
 {
     AVLTree tree;
 
-    tree.add(50);
-    tree.add(30);
-    tree.add(70);
-    tree.add(20);
-    tree.add(40);
-    tree.add(60);
-    tree.add(80);
-    tree.add(10);
-    tree.add(25);
+    tree.add(1);
+    tree.add(8);
+    tree.add(3);
+    tree.add(7);
+    tree.add(2);
+    tree.add(9);
+    tree.add(4);
+    tree.add(5);
+    tree.add(6);
 
     std::cout << "Recorrido Inorden: ";
     tree.print();
-   
-    
-   // tree.remove(20);
-    //tree.print();
 
-    //std::cout << "Eliminando 30...\n";
-    //tree.remove(30);
-    //tree.print();
+    /*
+     tree.remove(20);
+     tree.print();
+     tree.remove(30);
+     tree.print();
+     tree.remove(50);
+     tree.print();
+     */
 
-    //std::cout << "Eliminando 50...\n";
-    //tree.remove(50);
-    //tree.print();
-    
-    
-    
+
     sf::RenderWindow window(sf::VideoMode(1200, 700), "Arbol AVL");
     window.setFramerateLimit(60);
 
@@ -312,7 +309,7 @@ int main()
 
     sf::Text instrucciones;
     instrucciones.setFont(font);
-    instrucciones.setString("Amarillo: Balanceado | Rojo: Desbalanceado");
+   // instrucciones.setString("Amarillo: Balanceado | Rojo: Desbalanceado");
     instrucciones.setCharacterSize(16);
     instrucciones.setFillColor(sf::Color(200, 200, 200));
     instrucciones.setPosition(20, 650);
